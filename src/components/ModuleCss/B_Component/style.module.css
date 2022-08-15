@@ -1,0 +1,15 @@
+.title{
+    color:green;
+}
+/*Şuan yaptıgımda ikisinide bir index.js içinde Ave B componentini birlkte çağırsam title css ikiisndede aynı olacagı için*/
+/*//en son title propertysini alacak ben bunu istemiyorum*/
+/*Bizim buraya dahil ettiğimiz css doyyasındakiler karışmadan ilgiili componente gidip işlem yapsın isitoyruz*/
+
+/*Çözüm*/
+/*css dosyasını module adını ekleyerek bunu çözeriz.*/
+
+/*style.module.css -> style.module.css diyerek*/
+
+/*A {title: 'style_title__7R41l'} title: "style_title__7R41l"[[Prototype]]:*/
+/*B {title: 'style_title__20uaB'}title: "style_title__20uaB"[[Prototype]]:*/
+/*//hepsi için farklı id style tanımladı*/
