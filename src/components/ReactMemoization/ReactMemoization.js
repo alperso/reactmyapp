@@ -42,7 +42,7 @@
 //useMemo NEDİR?????---------------------------
 
 
-import React, {useState,useMemo} from 'react';
+import React, {useState, useMemo, useCallback} from 'react';
 import Header from "./components/Header";
 
 
@@ -59,6 +59,12 @@ function ReactMemoization(props) {
         return calcObject();
     },[]);
 
+    const [text, setText] = useState("");
+    const func_increment=useCallback(()=>{
+        setNumber((prevState => prevState+1))
+    },[]); //number koymalıyım yoksa 1 kere çalışacak yukarıya gitti useState default number 0 dır tekrar buraya geldi 1 yaptı
+    //1 saklanmıyor o yüzden deps:[number] değiştiiginde burası çalışsn diyecegim bunu yazdım bu sefer başka bir problem ortaya çıkacak
+    //her dafasınd render edecek o yüzden önceki statei al +1 ekle yapıyorum prevState sabittir ve önceki statei getiri
     return (
         <div>
             {/*<Header/>*/}
@@ -70,7 +76,7 @@ function ReactMemoization(props) {
             */}
 
             {/*useMemo*/}
-            <Header number={number < 5 ? 0 : null} data={data}/>
+            {/*<Header number={number < 5 ? 0 : null} data={data}/>*/}
             {/*data objemi componentde veri olarak gönderiyorum ama memo yapsam bile header içinde sürekli data gittiği için render ediliyor
             bunu çözmek için useMemo kullanmalıyım
             React memo ile sarmaladıgımız componente proplar değişmediği sürece o component baştan render olmaz demiştik ifade ayni gidiyor ama
@@ -87,7 +93,14 @@ function ReactMemoization(props) {
             */}
             <hr/>
             <h1>{number}</h1>
-            <button onClick={() => setNumber(number + 1)}>Artır</button>
+            {/*<button onClick={() => setNumber(number + 1)}>Artır</button>*/}
+
+            {/*useCallBack-----------------------*/}
+            {/*<Header setGonder={()=>setNumber(number+1)}/>*/}
+            {/*//Herdefasında number değiştiği için setGonder den dolayı render ediliyor ve componente tekrar çalışıyor ben bunun olmasını istemiyorum*/}
+            {/*ne kullanacagım??*/}
+            {/*useCallback ---yukarıda fonksiyon olarak yazdım*/}
+            <Header setGonder={func_increment}/>
         </div>
     );
 }
