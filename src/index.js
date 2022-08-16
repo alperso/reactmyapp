@@ -11,6 +11,11 @@ import UsersFetchAndAxios from "./components/FetchorAxios/Users";
 import LibAxios from "./components/FetchorAxios/LibAxios";
 import ReactRouter from "./components/ExampleRouter/ReactRouter";
 import ReactMemoization from "./components/ReactMemoization/ReactMemoization";
+import {ThemeProvider} from "./context/ThemeContext";
+import {UserProvider} from "./context/UserContext";
+import Button from "./context/Button";
+import Header from "./context/Header";
+import Container from "./context/Container";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,7 +33,23 @@ root.render(
         {/*Link Yönlendirme işlemleri*/}
         {/*<ReactRouter/>*/}
 
-        <ReactMemoization/>
+        {/*Component Performası için kullanılır, tekrar tekrar render edilmesin diye*/}
+        {/*<ReactMemoization/>*/}
+
+        {/*//Context Sarmallama İşlemi Nedir*/}
+        <ThemeProvider>
+            {/*//Data Sağlayıcı bu içeri ne componenti yazarsam contexdeki bütün verileri üstten alta doğru göndermeden istedigim yerde çekebilirm*/}
+            {/*dark diye bir value tutuyorum ve buraya yazdıgım comp.lardan bu değere erişebilecegim*/}
+            {/*<Header/>*/}
+            {/*<Button/>*/}
+
+            {/*//Thema Switcher (temayı butonla değiştirme) butonları bir tane componentten buraya çekicem container içinde themeprvider dan gele ndatayı kullanacagım*/}
+            <UserProvider>
+                <Container/>
+            </UserProvider>
+        </ThemeProvider>
+        {/*//Bu ThemeContext.Provider olan Provider i illa burada yapmak zorunda değiliz ThemeContext.js içinde de yapabilirim Temiz gözüksin diye*/}
+
     </React.StrictMode>
 );
 

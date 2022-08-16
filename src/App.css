@@ -4,6 +4,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+
 }
 .App-container1{
   width: 400px;
@@ -52,6 +53,21 @@ ul,li{
 .active{
   padding: 5px;
 }
+
+/*Context Switch kullanarak buton ile thema değiştirme*/
+.context{
+  min-height: 100vh;
+  text-align: center;
+
+}
+.context.dark{
+  text-align: center;
+
+  background-color: black;
+  color: white;
+}
+/*Context Switch kullanarak buton ile thema değiştirme*/
+
 
 /*.App-logo {*/
 /*  height: 40vmin;*/
